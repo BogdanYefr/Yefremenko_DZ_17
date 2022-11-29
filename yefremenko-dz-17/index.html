@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title</title>
+    <style>
+      body {
+        background-color: antiquewhite;
+      }
+      nav {
+        display: flex;
+        justify-content: space-around;
+        width: 29%;
+        margin: auto;
+      }
+      nav a, h2 {
+        text-decoration: none;
+        color: #ff9800;
+      }
+
+      h2 {
+        text-align: center;
+      }
+      
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+           
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/history@5/umd/history.production.min.js" crossorigin></script>
+  
+  <script src="https://unpkg.com/react-router@6.3.0/umd/react-router.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-router-dom@6.3.0/umd/react-router-dom.production.min.js" crossorigin></script>
+  
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+           
+    <script type="text/babel">
+    const Router = ReactRouterDOM.BrowserRouter;
+    const Route = ReactRouterDOM.Route;
+    const Routes = ReactRouterDOM.Routes;
+    const Link = ReactRouterDOM.Link;
+   
+    function Layout(){ return <h2>Layout</h2>; }
+    function Home(){ return <h2>Home</h2>; }
+    function Blogs(){ return <h2>Blogs</h2>; }
+    function Contact(){ return <h2>Contact</h2>; }
+    function NoPage(){ return <h2>No page</h2>; }
+    function Nav(){
+        return <nav>
+                <Link to="/">Layout</Link>  
+                <Link to="/home">Home</Link>  
+                <Link to="/blogs">Blogs</Link>
+                <Link to="/contact">Contact</Link>
+            </nav>;
+    }
+    ReactDOM.createRoot(
+        document.getElementById("app")
+    )
+    .render(
+        <Router>
+            <div className='container'>
+              <Nav />
+              <Routes>
+                <Route path="/" element={<Layout />} />
+                <Route path="/home" element={ <Home />} />
+                <Route path="/blogs" element={<Blogs />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<NoPage />} />
+               </Routes>
+            </div>
+        </Router>
+    );
+    </script>
+</body>
+</html>
